@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import userActions from '../../users/usersActions';
+import userActions from '../../domains/users/usersActions';
 
 
 const Button = ({ className, text = "button text", getUsers, btnType = "button" }) => (

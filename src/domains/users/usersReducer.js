@@ -1,4 +1,5 @@
-import usersTypes from './usersTypes'
+import usersTypes from './usersTypes';
+
 const usersReducers = (state = [], { type, payload }) => {
     switch (type) {
         case (usersTypes.FETCH_USERS_SUCCESS): return payload.users;
