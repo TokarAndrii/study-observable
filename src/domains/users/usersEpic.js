@@ -4,7 +4,7 @@ import { ajax } from 'rxjs/ajax';
 import { switchMap, takeUntil, map } from 'rxjs/operators';
 import usersActions from './usersActions'
 
-const usersEpic = action$ => action$.pipe(
+const usersEpic = (action$, ) => action$.pipe(
     ofType(usersTypes.FETCH_USERS_START),
     switchMap(() => ajax.getJSON('http://localhost:3000/users')
         .pipe(

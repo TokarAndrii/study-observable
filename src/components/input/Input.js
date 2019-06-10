@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Input = ({ className, labelTxt, inputType = 'text', inputPlaceHolder,
-    inputName, inputValue, handleChange = () => null }) => (
-        <label>
+    name, inputValue, handleChange = () => null }) => (
+        <label className={className}>
             <span>{labelTxt}</span>
-            <input type={inputType} placeholder={inputPlaceHolder} name={inputName}
+            <input type={inputType} placeholder={inputPlaceHolder} name={name}
                 value={inputValue} onChange={handleChange}></input>
         </label>
     );

@@ -6,6 +6,7 @@ const StyledButton = styled(Button)`
     padding: 12px 56px;
     border-radius: 5px;
     letter-spacing: 1px;
+    text-align: center;
 
     :hover{
         background-color: grey;

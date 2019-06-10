@@ -6,7 +6,6 @@ const StyledSingleUser = styled(SingleUser)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
 .userDetailsHolder{
     width: 500px;
     display: flex;

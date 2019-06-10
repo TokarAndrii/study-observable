@@ -64,6 +64,7 @@ li{
 .userDetailsBtn{
     padding: 4px 12px;
     margin-right: 8px;
+    text-align: center;
 }
 
 .userDetailsBtn:hover{
@@ -73,6 +74,7 @@ li{
 .link {
     color: black;
     text-transform: capitalize;
+    text-align: center;
 }
 
 `
