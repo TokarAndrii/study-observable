@@ -32,8 +32,18 @@ export const userEditEpic = (action$, state$) => action$.pipe(
         return ajax({
             url: `http://localhost:3000/users/${user.id}`,
             method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: {
-                firstName: user.firstName
+                firstName: user.firstName,
+                secondName: user.secondName,
+                photo: user.photo,
+                email: user.email,
+                phone: user.phone,
+                website: user.website,
+                address: { city: user.city },
+                company: { name: user.companyName }
             }
         })
             .pipe(

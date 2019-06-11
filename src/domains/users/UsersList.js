@@ -28,6 +28,7 @@ class UsersList extends Component {
         return (
             <div className={className}>
                 <Button text="Get Users" handleClick={getUsers} />
+                <Link className="userCreateLink" to="create_user"> create user </Link>
                 <ul >
                     {users.length > 0 && (
                         <>

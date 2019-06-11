@@ -7,6 +7,7 @@ import UsersPage from '../../pages/users_page/StyledUsersPage';
 import HomePage from '../../pages/home/StyledHomePage';
 import SingleUserPage from '../../pages/single_user_page/StyledSingleUserPage';
 import EditUserPage from '../../pages/edit_user_page/StyledEditUserPage';
+import StyledCreateUserPage from '../../pages/create_user_page/StyledCreateUserPage';
 
 import selectors from './selectors';
 import routes from '../../configs/routes'
@@ -28,6 +29,7 @@ function App({ className, isLoading }) {
             <Route exact path={routes.USERS} component={UsersPage}></Route>
             <Route exact path={routes.USER_PAGE} component={SingleUserPage}></Route>
             <Route exact path={routes.USER_PAGE_EDIT} component={EditUserPage}></Route>
+            <Route exact path={routes.CREATE_USER} component={StyledCreateUserPage}></Route>
           </Switch>
           {isLoading && <Spinner />}
         </main>

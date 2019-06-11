@@ -67,6 +67,24 @@ li{
     text-align: center;
 }
 
+.userCreateLink {
+    color: black;
+    margin-top: 32px;
+    padding: 10px 56px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: capitalize;
+    background-color: #DDD;
+    margin-left: 32px;
+    box-shadow:  2px 2px rgba(0,0,0,0.5)
+}
+
+.userCreateLink:hover{
+    background-color: grey;
+    color: white;
+}
+
 .userDetailsBtn:hover{
     outline: 1px solid blueviolet;
 }
