@@ -23,12 +23,9 @@ export const userEditEpic = (action$, state$) => action$.pipe(
     ofType(editUserTypes.FETCH_USER_EDIT_START),
     withLatestFrom(state$),
     map(([action, state]) => {
-        console.log('state', state);
-        console.log('action', action)
         return action.payload.user
     }),
     switchMap(user => {
-        console.log('id at userEditEpic', user.id);
         return ajax({
             url: `http://localhost:3000/users/${user.id}`,
             method: 'PATCH',

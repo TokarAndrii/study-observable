@@ -5,6 +5,7 @@ import Button from '../../components/button/StyledButton';
 import editUserActions from './editUserActions';
 import selectors from '../app/selectors';
 import usersActions from '../users/usersActions';
+import routes from '../../configs/routes';
 
 const INITIAL_STATE = {
     firstName: '',
@@ -28,8 +29,7 @@ class EditUser extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const { editUser, } = this.props;
-        console.log('handleSubmit');
+        const { editUser, history, } = this.props;
         const { firstName, secondName, photo, email, website,
             city, companyName, phone, id } = this.state;
         const user = {
@@ -37,6 +37,8 @@ class EditUser extends Component {
             website, city, companyName, phone, id
         }
         editUser(user);
+
+        history.push(routes.USERS);
 
     }
 
@@ -46,8 +48,6 @@ class EditUser extends Component {
     }
 
     componentDidUpdate(prevProps, ) {
-        console.log('componentDidUpdate EditUser')
-        const { getUsers, } = this.props;
         if (prevProps.user_edit !== this.props.user_edit) {
             const { user_edit: { firstName = "" } } = this.props;
             const { user_edit: { secondName = "" } } = this.props;
@@ -63,9 +63,10 @@ class EditUser extends Component {
                 firstName, secondName, photo, email,
                 phone, website, city, companyName, id
             })
-            getUsers();
         }
+
     }
+
     render() {
         const { firstName, secondName, photo, email, website,
             city, companyName, phone } = this.state;
@@ -97,7 +98,6 @@ const mdtp = {
 
 const mstp = state => ({
     user_edit: selectors.getEditUser(state),
-    isUserEdited: selectors.getIsEditUser(state),
 })
 
 export default connect(mstp, mdtp)(EditUser);
