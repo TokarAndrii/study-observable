@@ -4,6 +4,7 @@ import Button from '../../components/button/StyledButton';
 import { connect } from 'react-redux';
 import routes from '../../configs/routes';
 import userActions from '../users/usersActions';
+import deleteUserActions from '../delete_user/deleteUserActions';
 import selectors from '../app/selectors';
 
 class UsersList extends Component {
@@ -24,10 +25,10 @@ class UsersList extends Component {
         }
     }
     render() {
-        const { className, users = [], getUsers } = this.props;
+        const { className, users = [], getUsers, deleteUser } = this.props;
         return (
             <div className={className}>
-                <Button text="Get Users" handleClick={getUsers} />
+                <Button text="Get Users" onClick={getUsers} />
                 <Link className="userCreateLink" to="create_user"> create user </Link>
                 <ul >
                     {users.length > 0 && (
@@ -57,7 +58,7 @@ class UsersList extends Component {
                             <span className="userDetails">{user.address.city}</span>
                             <span className="userDetails">{user.company.name}</span>
                             <span className="userDetails actions">
-                                <button className="userDetailsBtn">Remove</button>
+                                <button className="userDetailsBtn" onClick={() => deleteUser(user.id)}>Remove</button>
                                 <button className="userDetailsBtn"><Link className="link" to={`${routes.USERS}/${user.id}`}>Details</Link></button>
                                 <button className="userDetailsBtn"><Link className="link" to={`${routes.USERS_EDIT}/${user.id}`}>Edit</Link></button>
                             </span>
@@ -73,7 +74,8 @@ const mstp = state => ({
 });
 
 const mdtp = {
-    getUsers: userActions.FETCH_USERS_START
+    getUsers: userActions.FETCH_USERS_START,
+    deleteUser: deleteUserActions.FETCH_USER_DELETE_START
 }
 
 export default connect(mstp, mdtp)(UsersList);

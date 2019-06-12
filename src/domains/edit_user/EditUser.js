@@ -82,7 +82,7 @@ class EditUser extends Component {
                     <Input labelTxt="Address City" name="city" inputValue={city} handleChange={this.handleChangeInput}></Input>
                     <Input labelTxt="Website" name="website" inputValue={website} handleChange={this.handleChangeInput}></Input>
                     <Input labelTxt="Company" name="companyName" inputValue={companyName} handleChange={this.handleChangeInput}></Input>
-                    <Button type="submit" text="Edit User" handleClick={this.handleSubmit}></Button>
+                    <Button type="submit" text="Edit User" onClick={this.handleSubmit}></Button>
                 </form>
             </div>
         )

@@ -5,10 +5,11 @@ import {
     userEdiGetBeforeUpdateEpic,
     userEditEpic
 } from '../edit_user/editUserEpic';
+import deleteUserEpic from '../delete_user/deleteUserEpic';
 
 const rootEpic =
     combineEpics(usersEpic, userEdiGetBeforeUpdateEpic,
-        userEditEpic, createUserEpic
+        userEditEpic, createUserEpic, deleteUserEpic
     );
 
 
