@@ -7,7 +7,7 @@ import { switchMap, withLatestFrom, map, } from 'rxjs/operators';
 const deleteUserEpic = (action$, state$) => action$.pipe(
     ofType(deletUserTypes.FETCH_USER_DELETE_START),
     withLatestFrom(state$),
-    map(([action, state]) => action.payload.id),
+    map(([action,]) => action.payload.id),
     switchMap((id) => {
         return ajax({
             url: `http://localhost:3000/users/${id}`,
@@ -15,7 +15,6 @@ const deleteUserEpic = (action$, state$) => action$.pipe(
         })
             .pipe(
                 map(data => {
-                    console.log('response at deleteUserEpic', data);
                     return deleteUserActions.FETCH_USER_DELETE_SUCCESS(id)
                 }),
             )

@@ -10,7 +10,6 @@ import selectors from '../app/selectors';
 class UsersList extends Component {
 
     componentDidMount() {
-        console.log('componentDidMount UsersList');
         const { getUsers, users } = this.props;
 
         if (users.length === 0) getUsers();
@@ -18,7 +17,6 @@ class UsersList extends Component {
 
 
     componentDidUpdate(prevProps) {
-        console.log('componentDidUpdate');
         const { getUsers, users } = this.props;
         if (prevProps.users !== users) {
             return getUsers();
@@ -59,8 +57,8 @@ class UsersList extends Component {
                             <span className="userDetails">{user.company.name}</span>
                             <span className="userDetails actions">
                                 <button className="userDetailsBtn" onClick={() => deleteUser(user.id)}>Remove</button>
-                                <button className="userDetailsBtn"><Link className="link" to={`${routes.USERS}/${user.id}`}>Details</Link></button>
-                                <button className="userDetailsBtn"><Link className="link" to={`${routes.USERS_EDIT}/${user.id}`}>Edit</Link></button>
+                                <Link className="link" to={`${routes.USERS}/${user.id}`}>Details</Link>
+                                <Link className="link" to={`${routes.USERS_EDIT}/${user.id}`}>Edit</Link>
                             </span>
                         </li>
                     ))}

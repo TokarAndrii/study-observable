@@ -1,8 +1,8 @@
-const protocol = 'http';
-const host = 'localhost';
-const port = 3000;
-const users = 'users';
+export const protocol = 'http';
+export const host = 'localhost';
+export const port = 3000;
+export const users = 'users';
 
-const baseUrl = `${protocol}://${host}:${port}/${users}`;
+export const baseUrl = `${protocol}://${host}:${port}/${users}`;
 
 export default baseUrl;

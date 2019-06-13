@@ -1,16 +1,18 @@
 import createUserTypes from './createUserTypes';
 import createUserActions from './createUserActions';
+import { of } from 'rxjs';
 import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
-import { switchMap, withLatestFrom, map, } from 'rxjs/operators';
+import { switchMap, withLatestFrom, map, catchError, } from 'rxjs/operators';
+import { protocol, host, port, users } from '../../configs/axiosConf';
 
 const createUserEpic = (action$, state$) => action$.pipe(
     ofType(createUserTypes.FETCH_USER_CREATE_START),
     withLatestFrom(state$),
-    map(([action, state]) => action.payload.user),
+    map(([action,]) => action.payload.user),
     switchMap((user) => {
         return ajax({
-            url: `http://localhost:3000/users/`,
+            url: `${protocol}://${host}:${port}/${users}/`,
             method: `POST`,
             headers: {
                 'Content-Type': 'application/json',
@@ -28,8 +30,14 @@ const createUserEpic = (action$, state$) => action$.pipe(
         })
             .pipe(
                 map(data => {
-                    console.log('response at createUserEpic', data);
                     return createUserActions.FETCH_USER_CREATE_SUCCESS(data.response)
+                }),
+                catchError(({ message: error }) => {
+                    return of({
+                        type: createUserTypes.FETCH_USER_CREATE_FAILED,
+                        payload: { error }
+                    })
+
                 }),
             )
     })

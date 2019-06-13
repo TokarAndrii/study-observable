@@ -21,7 +21,6 @@ class CreateUserForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log('handleSubmit at CreateUserForm');
         const { firstName, secondName, photo, email, website,
             city, companyName, phone, } = this.state;
         const { addUser, history, } = this.props;

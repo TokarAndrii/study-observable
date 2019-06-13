@@ -9,7 +9,6 @@ const SingleUser = ({ className, id }) => {
     useEffect(() => {
         axios.get(`${baseUrl}/${id}`)
             .then(resp => {
-                console.log(resp.data);
                 return resp.data;
             })
             .then(user => setSingleUser(user));

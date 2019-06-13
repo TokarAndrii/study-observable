@@ -1,12 +1,13 @@
-import * as R from 'ramda';
+import { pathOr } from 'ramda';
 
-//const getIsLoading = state => state.isLoading;
-const getIsLoading = R.pathOr(false, ["isLoading"]);
-const getEditUser = R.pathOr({}, ["edit", "user_edit"]);
-const getIsEditUser = R.pathOr({}, ["edit", "isEdited"]);
-const getUsers = R.pathOr({}, ["users"]);
+const getIsLoading = pathOr(false, ["isLoading"]);
+const getEditUser = pathOr({}, ["edit", "user_edit"]);
+const getIsEditUser = pathOr({}, ["edit", "isEdited"]);
+const getUsers = pathOr({}, ["users"]);
+const isError = pathOr(false, ["error", "isError"]);
+const getErrorMessage = pathOr(false, ["error", "errorMessage"]);
 
 export default {
     getIsLoading, getEditUser, getUsers,
-    getIsEditUser
+    getIsEditUser, isError, getErrorMessage,
 };

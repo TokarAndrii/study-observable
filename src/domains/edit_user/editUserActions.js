@@ -18,6 +18,11 @@ const FETCH_USER_EDIT_START = user => ({
 const FETCH_USER_EDIT_SUCCESS = user => ({
     type: editUserTypes.FETCH_USER_EDIT_SUCCESS,
     payload: { user }
+});
+
+const FETCH_USER_EDIT_FAILED = error => ({
+    type: editUserTypes.FETCH_USER_EDIT_FAILED,
+    payload: { error }
 })
 
 
@@ -25,5 +30,6 @@ export default {
     FETCH_USER_GET_BEFORE_EDIT_START,
     FETCH_USER_GET_BEFORE_EDIT_SUCCESS,
     FETCH_USER_EDIT_START,
-    FETCH_USER_EDIT_SUCCESS
+    FETCH_USER_EDIT_SUCCESS,
+    FETCH_USER_EDIT_FAILED
 }

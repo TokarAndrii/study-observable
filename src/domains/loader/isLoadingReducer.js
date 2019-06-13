@@ -10,7 +10,7 @@ const isLoadingReducer = (state = false, { type, payload }) => {
         case createUserTypes.FETCH_USER_CREATE_START:
             return true;
         case editUserTypes.FETCH_USER_EDIT_SUCCESS:
-        case editUserTypes.FETCH_USERS_FAILED:
+        case editUserTypes.FETCH_USER_EDIT_FAILED:
         case editUserTypes.FETCH_USER_GET_BEFORE_EDIT_SUCCESS:
         case editUserTypes.FETCH_USER_GET_BEFORE_EDIT_FAILED:
         case userTypes.FETCH_USERS_FAILED:

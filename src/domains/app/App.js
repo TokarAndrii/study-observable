@@ -10,10 +10,11 @@ import EditUserPage from '../../pages/edit_user_page/StyledEditUserPage';
 import StyledCreateUserPage from '../../pages/create_user_page/StyledCreateUserPage';
 
 import selectors from './selectors';
-import routes from '../../configs/routes'
+import routes from '../../configs/routes';
+import Error from '../error/StyledError';
 
 
-function App({ className, isLoading }) {
+function App({ className, isLoading, isError }) {
   return (
     <div className={className}>
       <div className="App">
@@ -23,16 +24,19 @@ function App({ className, isLoading }) {
             Redux-observable
           </a>
         </header>
-        <main>
-          <Switch>
-            <Route exact path={routes.INDEX} component={HomePage}></Route>
-            <Route exact path={routes.USERS} component={UsersPage}></Route>
-            <Route exact path={routes.USER_PAGE} component={SingleUserPage}></Route>
-            <Route exact path={routes.USER_PAGE_EDIT} component={EditUserPage}></Route>
-            <Route exact path={routes.CREATE_USER} component={StyledCreateUserPage}></Route>
-          </Switch>
-          {isLoading && <Spinner />}
-        </main>
+        {!isError && (
+          <main>
+            <Switch>
+              <Route exact path={routes.INDEX} component={HomePage}></Route>
+              <Route exact path={routes.USERS} component={UsersPage}></Route>
+              <Route exact path={routes.USER_PAGE} component={SingleUserPage}></Route>
+              <Route exact path={routes.USER_PAGE_EDIT} component={EditUserPage}></Route>
+              <Route exact path={routes.CREATE_USER} component={StyledCreateUserPage}></Route>
+            </Switch>
+          </main>
+        )}
+        {isError && <Error></Error>}
+        {isLoading && <Spinner />}
       </div>
 
     </div>
@@ -41,6 +45,7 @@ function App({ className, isLoading }) {
 
 const mstp = state => ({
   isLoading: selectors.getIsLoading(state),
+  isError: selectors.isError(state),
 });
 
 

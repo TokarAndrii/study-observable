@@ -65,6 +65,7 @@ li{
     padding: 4px 12px;
     margin-right: 8px;
     text-align: center;
+    background-color: #DDD;
 }
 
 .userCreateLink {
@@ -93,6 +94,16 @@ li{
     color: black;
     text-transform: capitalize;
     text-align: center;
+    padding: 5px 12px;
+    margin-right: 8px;
+    text-align: center;
+    border: 1px solid grey;
+    background-color: #DDD;
+    font: 400 13.3333px Arial;    
+}
+
+.link:hover{
+    outline: 1px solid blueviolet;
 }
 
 `

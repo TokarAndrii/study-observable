@@ -10,5 +10,13 @@ const FETCH_USER_CREATE_SUCCESS = user => ({
     payload: { user }
 });
 
+const FETCH_USER_CREATE_FAILED = error => ({
+    type: createUserTypes.FETCH_USER_CREATE_FAILED,
+    payload: { error }
+})
 
-export default { FETCH_USER_CREATE_START, FETCH_USER_CREATE_SUCCESS }
+
+export default {
+    FETCH_USER_CREATE_START, FETCH_USER_CREATE_SUCCESS,
+    FETCH_USER_CREATE_FAILED,
+}
