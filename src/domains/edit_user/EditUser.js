@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { applySpec, } from 'ramda';
 import Input from '../../components/input/StyledInput';
 import Button from '../../components/button/StyledButton';
 import editUserActions from './editUserActions';
@@ -96,8 +97,9 @@ const mdtp = {
     getUsers: usersActions.FETCH_USERS_START,
 }
 
-const mstp = state => ({
-    user_edit: selectors.getEditUser(state),
+
+const mstp = applySpec({
+    user_edit: selectors.getEditUser
 })
 
 export default connect(mstp, mdtp)(EditUser);

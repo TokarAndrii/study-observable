@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { applySpec, } from 'ramda';
 import selectors from '../app/selectors';
 import isErrorActions from './isErrorActions';
 
@@ -9,9 +10,10 @@ const Error = ({ className, errorMessage, handleCloseError }) => (
     </div>
 );
 
-const mstp = state => ({
-    errorMessage: selectors.getErrorMessage(state),
-});
+
+const mstp = applySpec({
+    errorMessage: selectors.getErrorMessage
+})
 
 const mdtp = {
     handleCloseError: isErrorActions.CLOSE_ERROR,

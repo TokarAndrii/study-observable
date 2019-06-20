@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { applySpec, } from 'ramda';
 import Spinner from '../loader/Spinner';
 
 import UsersPage from '../../pages/users_page/StyledUsersPage';
@@ -43,10 +44,10 @@ function App({ className, isLoading, isError }) {
   );
 }
 
-const mstp = state => ({
-  isLoading: selectors.getIsLoading(state),
-  isError: selectors.isError(state),
-});
+const mstp = applySpec({
+  isLoading: selectors.getIsLoading,
+  isError: selectors.isError
+})
 
 
 export default connect(mstp)(App);

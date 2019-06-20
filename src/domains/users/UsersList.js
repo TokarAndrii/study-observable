@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { applySpec, } from 'ramda';
 import Button from '../../components/button/StyledButton';
 import { connect } from 'react-redux';
 import routes from '../../configs/routes';
@@ -67,14 +68,17 @@ class UsersList extends Component {
         );
     }
 }
-const mstp = state => ({
-    users: selectors.getUsers(state),
+
+const mstp = applySpec({
+    users: selectors.getUsers
 });
+
 
 const mdtp = {
     getUsers: userActions.FETCH_USERS_START,
     deleteUser: deleteUserActions.FETCH_USER_DELETE_START
 }
+
 
 export default connect(mstp, mdtp)(UsersList);
 
